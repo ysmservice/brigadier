@@ -137,6 +137,17 @@ public abstract class CommandNode<S> implements Comparable<CommandNode<S>> {
     public Predicate<S> getRequirement() {
         return requirement;
     }
+        // コマンドを削除するメソッド
+    public void removeCommand(String commandToRemove) {
+        // RootCommandNodeを取得
+
+        // 削除するコマンドノードを見つける
+        CommandNode<Object> nodeToRemove = this.getChild(commandToRemove);
+        if (nodeToRemove != null) {
+            // コマンドノードを削除
+            rootCommandNode.removeChild(nodeToRemove);
+        }
+    }
 
     public abstract String getName();
 
